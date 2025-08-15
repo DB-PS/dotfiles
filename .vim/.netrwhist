@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/Users/darshanbagrecha/workspace/monorepo/packages/restClients'
+let g:netrw_dirhist_6='/Users/darshanbagrecha/workspace/monorepo/packages/internal-tool'
+let g:netrw_dirhist_5='/Users/darshanbagrecha/personal/marching-squares/.git'
+let g:netrw_dirhist_4='/Users/darshanbagrecha/workspace/monorepo/packages/internal-tool/src/view/Login'
+let g:netrw_dirhist_3='/Users/darshanbagrecha/workspace/heimdall'
+let g:netrw_dirhist_2='/Users/darshanbagrecha/workspace/heimdall/src/main/java/com/playment/heimdall/db/mappers'
+let g:netrw_dirhist_1='/Users/darshanbagrecha/workspace/fts-client/src'
+let g:netrw_dirhist_0='/Users/darshanbagrecha/workspace/fts-client'
+let g:netrw_dirhist_9='/Users/darshanbagrecha/workspace/fts-client/src/config'
+let g:netrw_dirhist_8='/Users/darshanbagrecha/workspace/react-ai-platform-auth/src'

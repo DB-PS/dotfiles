@@ -1,0 +1,19 @@
+#theme
+theme = GruvboxDark
+
+#font
+font-family = "JetBrainsMono NFM Light"
+font-feature = +calt, +liga, +dliga
+font-size = 16
+
+#cursor
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor
+
+#keybind
+keybind = global:ctrl+q=toggle_quick_terminal
+
+#quick-terminal
+quick-terminal-animation-duration = 0
+macos-icon = retro

@@ -126,4 +126,4 @@ alias dot="cd ~/dotfiles"
 source ~/.tmux.sh
 
 # source secret tokens and work-related config
-source ~/.secrets
+source ~/.secrets.sh

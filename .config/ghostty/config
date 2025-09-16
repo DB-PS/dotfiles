@@ -1,19 +1,24 @@
 #theme
-theme = GruvboxDark
+theme = Gruvbox Dark
 
 #font
 font-family = "JetBrainsMono NFM Light"
 font-feature = +calt, +liga, +dliga
-font-size = 16
+font-size = 20
 
 #cursor
 cursor-style = block
 cursor-style-blink = false
-shell-integration-features = no-cursor
+
+#shell-integration
+shell-integration-features = no-cursor, sudo
 
 #keybind
 keybind = global:ctrl+q=toggle_quick_terminal
 
 #quick-terminal
 quick-terminal-animation-duration = 0
+
+#macos
+macos-titlebar-style = hidden
 macos-icon = retro

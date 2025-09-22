@@ -4,7 +4,7 @@ theme = Gruvbox Dark
 #font
 font-family = "JetBrainsMono NFM Light"
 font-feature = +calt, +liga, +dliga
-font-size = 20
+font-size = 23
 
 #cursor
 cursor-style = block

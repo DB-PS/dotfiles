@@ -121,7 +121,3 @@ nmap<C-g> :Rg<CR>
 nmap<C-l> :bwipeout<CR>
 nmap gb :<C-u>call gitblame#echo()<CR>
 tnoremap <C-n> <C-w>N
-
-"Commands
-command LSC LSClientEnable
-command LSCR LSClientRestartServer

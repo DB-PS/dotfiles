@@ -44,58 +44,51 @@ let g:lightline = {
 \}
 
 "LSP configuration
-set completefunc=lsc#complete#complete
-let g:lsc_server_commands = {
-	\'c': {
-		\'name': 'c',
-		\'command': 'clangd',
-		\'enabled': v:true,
-		\'suppress_stderr': v:true,
-	\},
-	\'go': {
-		\'name': 'go-lang',
-		\'command': 'gopls serve',
-		\'enabled': v:true,
-		\'suppress_stderr': v:true,
-	\},
-	\'python': {
-		\'name': 'python',
-		\'command': 'pylsp',
-		\'enabled': v:true,
-	\},
-	\'javascript': {
-		\'name': 'javascript',
-		\'command': 'typescript-language-server --stdio',
-		\'enabled': v:true,
-	\},
-	\'typescript': {
-		\'name': 'typescript',
-		\'command': 'typescript-language-server --stdio',
-		\'enabled': v:true,
-	\},
-	\'typescriptreact': {
-		\'name': 'typescript',
-		\'command': 'typescript-language-server --stdio',
-		\'enabled': v:true,
-	\},
-	\'javascriptreact': {
-		\'name': 'typescript',
-		\'command': 'typescript-language-server --stdio',
-		\'enabled': v:true,
-	\},
-	\'java': {
-		\'name': 'java',
-		\'command': 'jdtls',
-		\'enabled': v:true,
-	\},
-\}
+packadd lsp
 
-set completeopt-=preview
-let g:lsc_autocomplete_length = 0
-let g:lsc_enable_diagnostics = v:false
-let g:lsc_reference_highlights = v:true
-let g:lsc_trace_level = 'off'
-let g:lsc_popup_syntax = v:true
+call LspAddServer([#{name: 'clangd',
+			\   filetype: ['c', 'cpp'],
+			\   path: '/usr/bin/clangd',
+			\   args: ['--background-index', '--clang-tidy']
+			\ }])
+call LspAddServer([#{
+			\    name: 'typescriptlang',
+			\    filetype: ['javascript', 'typescript', 'typescriptreact', 'javascriptreact'],
+			\    path: '/opt/homebrew/bin/typescript-language-server',
+			\    args: ['--stdio'],
+			\  }])
+call LspAddServer([#{
+			\    name: 'golang',
+			\    filetype: ['go', 'gomod'],
+			\    path: '/opt/homebrew/bin/gopls',
+			\    args: ['serve'],
+			\  }])
+call LspAddServer([#{name: 'pylsp',
+			\   filetype: 'python',
+			\   path: '/opt/homebrew/bin/pylsp',
+			\   args: []
+			\ }])
+call LspAddServer([#{name: 'jdtls',
+			\   filetype: 'java',
+			\   path: '/opt/homebrew/bin/jdtls',
+			\   args: [],
+			\ }])
+
+call LspOptionsSet(#{
+			\   autoComplete: v:false,
+			\   autoHighlight: v:false,
+			\   completionMatcher: 'fuzzy',
+			\   diagSignErrorText: 'E>',
+			\   diagSignHintText: 'H>',
+			\   diagSignInfoText: 'I>',
+			\   diagSignWarningText: 'W>',
+			\   completionTextEdit: v:true,
+			\   omniComplete: v:true,
+			\   popupBorder: v:false,
+			\   showDiagOnStatusLine: v:true,
+			\   useBufferCompletion: v:true,
+			\   useQuickfixForLocations: v:true,
+			\ })
 
 "FZF configuration
 set rtp+=/opt/homebrew/opt/fzf
@@ -112,19 +105,21 @@ nnoremap <C-p> :<C-p>
 nnoremap gF <C-W>gf
 vnoremap gF <C-W>gf
 nmap <leader>F :let @+ = expand("%:p")<CR>
-nmap K  :LSClientShowHover<CR>
-nmap ga :LSClientFindCodeActions<CR>
-nmap gr :LSClientFindReferences<CR>
-nmap gi :LSClientFindImplementations<CR>
-nmap gc :LSClientRename<CR>
-nmap gd :LSClientGoToDefinition<CR>
-nmap ge :LSClientAllDiagnostics<CR>
-nmap <leader>E :LSClientDisableDiagnosticHighlights<CR>
-nmap E :let g:lsc_enable_diagnostics=v:true<CR>
+nmap K  :LspHover<CR>
+nmap ga :LspCodeAction<CR>
+nmap gr :LspShowReferences<CR>
+nmap gi :LspGotoImpl<CR>
+nmap gc :LspRename<CR>
+nmap gd :LspGotoDefinition<CR>
+nmap gt :LspPeekTypeDef<CR>
+nmap ge :LspDiag show<CR>
+nmap <leader>E :LspDiag highlight disable<CR>
+nmap E :LspDiag highlight enable<CR>
 nmap<C-f> :FZF<CR>
 nmap<C-b> :Buffer<CR>
 nmap<C-g> :Rg<CR>
 nmap<C-l> :bwipeout<CR>
+nmap gb :<C-u>call gitblame#echo()<CR>
 tnoremap <C-n> <C-w>N
 
 "Commands

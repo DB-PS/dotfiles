@@ -2,6 +2,10 @@ syntax enable
 filetype plugin indent on
 set re=0
 
+set encoding=utf-8
+setglobal fileencoding=utf-8
+set digraph
+
 set mouse=a
 
 set title
@@ -46,34 +50,6 @@ let g:lightline = {
 "LSP configuration
 packadd lsp
 
-call LspAddServer([#{name: 'clangd',
-			\   filetype: ['c', 'cpp'],
-			\   path: '/usr/bin/clangd',
-			\   args: ['--background-index', '--clang-tidy']
-			\ }])
-call LspAddServer([#{
-			\    name: 'typescriptlang',
-			\    filetype: ['javascript', 'typescript', 'typescriptreact', 'javascriptreact'],
-			\    path: '/opt/homebrew/bin/typescript-language-server',
-			\    args: ['--stdio'],
-			\  }])
-call LspAddServer([#{
-			\    name: 'golang',
-			\    filetype: ['go', 'gomod'],
-			\    path: '/opt/homebrew/bin/gopls',
-			\    args: ['serve'],
-			\  }])
-call LspAddServer([#{name: 'pylsp',
-			\   filetype: 'python',
-			\   path: '/opt/homebrew/bin/pylsp',
-			\   args: []
-			\ }])
-call LspAddServer([#{name: 'jdtls',
-			\   filetype: 'java',
-			\   path: '/opt/homebrew/bin/jdtls',
-			\   args: [],
-			\ }])
-
 call LspOptionsSet(#{
 			\   autoComplete: v:false,
 			\   autoHighlight: v:false,
@@ -90,14 +66,47 @@ call LspOptionsSet(#{
 			\   useQuickfixForLocations: v:true,
 			\ })
 
+call LspAddServer([#{name: 'clangd',
+			\   filetype: ['c', 'cpp'],
+			"\   path: '/usr/bin/clangd',
+			\   path: 'clangd',
+			\   args: ['--background-index', '--clang-tidy']
+			\ }])
+call LspAddServer([#{
+			\    name: 'typescriptlang',
+			\    filetype: ['javascript', 'typescript', 'typescriptreact', 'javascriptreact'],
+			"\    path: '/opt/homebrew/bin/typescript-language-server',
+			\    path: 'typescript-language-server',
+			\    args: ['--stdio'],
+			\  }])
+call LspAddServer([#{
+			\    name: 'golang',
+			\    filetype: ['go', 'gomod'],
+			"\    path: '/opt/homebrew/bin/gopls',
+			\   path: 'gopls',
+			\    args: ['serve'],
+			\  }])
+call LspAddServer([#{name: 'pylsp',
+			\   filetype: 'python',
+			"\   path: '/opt/homebrew/bin/pylsp',
+			\   path: 'pylsp',
+			\   args: []
+			\ }])
+call LspAddServer([#{name: 'jdtls',
+			\   filetype: 'java',
+			"\   path: '/opt/homebrew/bin/jdtls',
+			\   path: 'jdtls',
+			\   args: [],
+			\ }])
+
 "FZF configuration
 set rtp+=/opt/homebrew/opt/fzf
 let g:fzf_vim={}
 let g:fzf_vim.preview_window={}
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --hidden -g "!.git/" -g "!node_modules/" -g "!*.venv/" --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
+  \   'rg --hidden -g "!.git/" -g "!node_modules/" -g "!*.venv/" --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'},
+  \   <bang>0)
 
 "Mappings
 map Y "+y
@@ -121,3 +130,8 @@ nmap<C-g> :Rg<CR>
 nmap<C-l> :bwipeout<CR>
 nmap gb :<C-u>call gitblame#echo()<CR>
 tnoremap <C-n> <C-w>N
+
+"Commands
+command LSP LspServer start
+command LSPR LspServer restart
+command LSPC LspServer stop

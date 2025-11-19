@@ -103,9 +103,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # ARM ARCH - M Series
-# source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # CISC ARCH - Intel
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # python paths
 PATH=$PATH:~/Library/Python/3.9/bin
@@ -117,17 +117,30 @@ jenv() { export JAVA_HOME=$(/usr/libexec/java_home -v $1) && echo $JAVA_HOME }
 java() {$JAVA_HOME/bin/java "$@"}
 javac() {$JAVA_HOME/bin/java "$@"}
 
+expand_alias_normal() {
+  zle _expand_alias
+  [[ $? -ne 0 ]] && zle vi-forward-char
+}
+zle -N expand_alias_normal
+
 bindkey -v
+bindkey -M vicmd " " expand_alias_normal
+
 export BAT_THEME="gruvbox-dark"
 export FZF_DEFAULT_OPTS="--style minimal --height 30%"
 export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
 setopt CORRECT
-	
+
 function cd { builtin cd "$@" && ls -a && echo && gst --short 2> /dev/null }
 alias cat="bat -p -P"
 alias hl="rg --passthru"
 alias dot="cd ~/dotfiles"
 alias fzf="fzf --layout=reverse"
+alias http='curl -X GET --url "https://?" \
+-H "Authorization: " \
+-H "Content-Type: application/json;charset=UTF-8" \
+--data
+'
 
 #source tmux custom helper functions
 source ~/.tmux.sh

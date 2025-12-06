@@ -5,6 +5,7 @@ theme = Gruvbox Dark
 font-family = "JetBrainsMono NFM Light"
 font-feature = +calt, +liga, +dliga
 font-size = 27
+background-opacity = 0.9
 
 #cursor
 cursor-style = block
@@ -14,6 +15,14 @@ cursor-style-blink = false
 shell-integration-features = no-cursor, sudo
 
 #keybind
+keybind = global:super+D=unbind
+keybind = global:super+d=unbind
+
+keybind = global:super+J=new_split:up
+keybind = global:super+j=new_split:down
+keybind = global:super+L=new_split:left
+keybind = global:super+l=new_split:right
+
 keybind = global:ctrl+q=toggle_quick_terminal
 
 #quick-terminal

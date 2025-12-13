@@ -100,7 +100,8 @@ call LspAddServer([#{name: 'jdtls',
 			\ }])
 
 "FZF configuration
-set rtp+=/opt/homebrew/opt/fzf
+"set rtp+=/opt/homebrew/opt/fzf
+set rtp+=/usr/local/opt/fzf
 let g:fzf_vim={}
 let g:fzf_vim.preview_window={}
 command! -bang -nargs=* Rg

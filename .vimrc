@@ -4,7 +4,6 @@ set re=0
 
 set encoding=utf-8
 setglobal fileencoding=utf-8
-set digraph
 
 set mouse=a
 

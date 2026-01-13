@@ -1,9 +1,7 @@
 syntax enable
 filetype plugin indent on
+set nocompatible
 set re=0
-
-set encoding=utf-8
-setglobal fileencoding=utf-8
 
 set mouse=a
 
@@ -19,11 +17,10 @@ set shiftwidth=4
 set expandtab
 set autoindent
 
-set number
-set relativenumber
-
-set cursorline
-set cc=80
+"set number
+"set relativenumber
+"set cursorline
+"set cc=80
 
 set incsearch
 set hlsearch
@@ -99,8 +96,8 @@ call LspAddServer([#{name: 'jdtls',
 			\ }])
 
 "FZF configuration
-"set rtp+=/opt/homebrew/opt/fzf
-set rtp+=/usr/local/opt/fzf
+set rtp+=/opt/homebrew/opt/fzf
+"set rtp+=/usr/local/opt/fzf
 let g:fzf_vim={}
 let g:fzf_vim.preview_window={}
 command! -bang -nargs=* Rg

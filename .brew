@@ -12,3 +12,5 @@ tmux
 universal-ctags
 yarn
 zsh-syntax-highlighting
+python-lsp-server
+typescript-language-server

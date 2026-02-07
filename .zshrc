@@ -141,6 +141,7 @@ alias http='curl -X GET --url "https://?" \
 -H "Content-Type: application/json;charset=UTF-8" \
 --data
 '
+alias color='cat -l "conf"'
 
 #source tmux custom helper functions
 source ~/.tmux.sh

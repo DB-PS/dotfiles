@@ -6,7 +6,7 @@ set re=0
 set mouse=a
 
 set title
-set laststatus=2
+set laststatus=0
 set ruler
 
 set noswapfile
@@ -110,7 +110,7 @@ map Y "+y
 nnoremap <C-p> :<C-p>
 nnoremap gF <C-W>gf
 vnoremap gF <C-W>gf
-nmap <leader>F :let @+ = expand("%:p")<CR>
+nmap <leader>F :let @+ = expand("%:p") . ":" . line(".") . ":" . col(".")<CR>
 nmap K  :LspHover<CR>
 nmap ga :LspCodeAction<CR>
 nmap gr :LspShowReferences<CR>

@@ -60,6 +60,7 @@ call LspOptionsSet(#{
 			\   showDiagOnStatusLine: v:true,
 			\   useBufferCompletion: v:true,
 			\   useQuickfixForLocations: v:true,
+			\   filterCompletionDuplicates: v:true,
 			\ })
 
 call LspAddServer([#{name: 'clangd',

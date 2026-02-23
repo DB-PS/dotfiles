@@ -1,0 +1,14 @@
+[core]
+    compression = 9
+    whitespace = error
+    preloadindex = true
+[status]
+    branch = true
+    showStash = true
+    showUntrackedFiles = all
+[log]
+    abbrevCommit = true
+[branch]
+    sort = -committerdate
+[tag]
+    sort = -taggerdate

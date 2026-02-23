@@ -1,8 +1,14 @@
 #theme
 theme = Gruvbox Dark
 
+#window
+window-width = 80
+window-height = 40
+
 #font
-font-family = "JetBrainsMono NFM Light"
+#font-family = "Comic Mono"
+#font-family = "JetBrainsMono NFM Light"
+font-family = "Pixel Code ExtraLight"
 font-feature = +calt, +liga, +dliga
 font-size = 27
 background-opacity = 0.9
@@ -18,9 +24,7 @@ shell-integration-features = no-cursor, sudo
 keybind = global:super+D=unbind
 keybind = global:super+d=unbind
 
-keybind = global:super+J=new_split:up
 keybind = global:super+j=new_split:down
-keybind = global:super+L=new_split:left
 keybind = global:super+l=new_split:right
 
 keybind = global:ctrl+q=toggle_quick_terminal

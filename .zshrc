@@ -126,6 +126,7 @@ zle -N expand_alias_normal
 bindkey -v
 bindkey -M vicmd " " expand_alias_normal
 
+export EDITOR=vim
 export BAT_THEME="gruvbox-dark"
 export FZF_DEFAULT_OPTS="--style minimal --height 30%"
 export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"

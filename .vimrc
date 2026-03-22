@@ -43,6 +43,15 @@ let g:lightline = {
 	\'colorscheme': 'gruvbox',
 \}
 
+"difftool changes
+set diffopt=vertical,filler
+
+highlight! DiffAdd    ctermbg=NONE guibg=NONE ctermfg=Green cterm=bold
+highlight! DiffDelete ctermbg=NONE guibg=NONE ctermfg=Red   cterm=bold
+highlight! DiffChange ctermbg=NONE guibg=NONE ctermfg=NONE  cterm=NONE gui=NONE
+highlight! DiffText   ctermbg=NONE guibg=NONE ctermfg=Blue  cterm=bold,underline
+highlight! DiffFiller ctermbg=NONE guibg=NONE ctermfg=Grey
+
 "LSP configuration
 packadd lsp
 

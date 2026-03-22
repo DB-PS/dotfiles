@@ -12,3 +12,8 @@
     sort = -committerdate
 [tag]
     sort = -taggerdate
+[diff]
+    algorithm = patience
+    tool = vimdiff
+[difftool]
+    prompt = false

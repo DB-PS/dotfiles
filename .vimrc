@@ -44,13 +44,25 @@ let g:lightline = {
 \}
 
 "difftool changes
-set diffopt=vertical,filler
+set diffopt=vertical,filler,context:99999
 
-highlight! DiffAdd    ctermbg=NONE guibg=NONE ctermfg=Green cterm=bold
-highlight! DiffDelete ctermbg=NONE guibg=NONE ctermfg=Red   cterm=bold
-highlight! DiffChange ctermbg=NONE guibg=NONE ctermfg=NONE  cterm=NONE gui=NONE
-highlight! DiffText   ctermbg=NONE guibg=NONE ctermfg=Blue  cterm=bold,underline
-highlight! DiffFiller ctermbg=NONE guibg=NONE ctermfg=Grey
+if &diff
+    set nofoldenable
+endif
+"
+" Highlights without background
+"highlight! DiffAdd    ctermbg=NONE guibg=NONE ctermfg=Green cterm=bold,underline
+"highlight! DiffDelete ctermbg=NONE guibg=NONE ctermfg=Red   cterm=bold,underline
+"highlight! DiffText   ctermbg=NONE guibg=NONE ctermfg=Blue  cterm=bold,underline
+"highlight! DiffChange ctermbg=NONE guibg=NONE ctermfg=NONE  cterm=NONE gui=NONE
+"highlight! DiffFiller ctermbg=NONE guibg=NONE ctermfg=Grey
+"
+highlight! DiffAdd     ctermbg=58 guibg=NONE ctermfg=NONE cterm=NONE
+highlight! DiffDelete  ctermbg=52 guibg=NONE ctermfg=NONE cterm=NONE
+highlight! DiffText    ctermbg=59 guibg=NONE ctermfg=NONE cterm=NONE
+highlight! DiffTextAdd ctermbg=58 guibg=NONE ctermfg=NONE cterm=NONE
+highlight! DiffChange  ctermbg=NONE guibg=NONE ctermfg=NONE  cterm=NONE gui=NONE
+highlight! DiffFiller  ctermbg=NONE guibg=NONE ctermfg=Grey
 
 "LSP configuration
 packadd lsp
